@@ -7,8 +7,6 @@
 
 public final class DateConverter {
     
-    private static let BS = [2078: [31, 31, 31, 32, 31, 31, 30, 29, 30, 29, 30, 30]]
-    
     public static func bSToAD(date: NCDate) throws -> (day: Int, month: Int, year: Int) {
         if !validateDate(date: date) {
             throw NSError()
@@ -18,7 +16,7 @@ public final class DateConverter {
     }
     
     private static func validateDate(date: NCDate) -> Bool {
-        if let daysInMonth = BS[date.year],
+        if let daysInMonth = BSDates.bs[date.year],
            validateMonth(date.month) && validateDay(date.day) {
             let dateAsIndexForBS = date.month - 1
             if date.day <= daysInMonth[dateAsIndexForBS] {
