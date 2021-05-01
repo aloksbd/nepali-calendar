@@ -10,31 +10,49 @@ public final class DateConverter {
     public init() {}
     
     public func bSToAD(day: Int, month: Int, year: Int) throws -> (day: Int, month: Int, year: Int) {
-        if !validateDateFormat(day: day, month: month, year: year) {
+        if !validateDate(day: day, month: month, year: year) {
             throw NSError()
         }
         
         return (0,0,0)
     }
     
-    private func validateDateFormat(day: Int, month: Int, year: Int) -> Bool {
-        if day < 1 || month < 1 {
-            return false
+    private func validateDate(day: Int, month: Int, year: Int) -> Bool {
+        return validateRange(day: day, month: month, year: year)
+    }
+    
+    private func validateRange(day: Int, month: Int, year: Int) -> Bool {
+        if validateDay(day),
+           validateMonth(month),
+           validateYear(year){
+            return true
         }
         
-        if month > 12 {
-            return false
+        return false
+    }
+    
+    private func validateDay(_ day: Int) -> Bool {
+        let validDays = (1...32)
+        if validDays.contains(day) {
+            return true
         }
-        
-        if day > 32 {
-            return false
+        return false
+    }
+    
+    private func validateMonth(_ month: Int) -> Bool {
+        let validMonths = (1...12)
+        if validMonths.contains(month) {
+            return true
         }
-        
-        if year != 2078 {
-            return false
+        return false
+    }
+    
+    private func validateYear(_ year: Int) -> Bool {
+        let validYears = (2078...2078)
+        if validYears.contains(year) {
+            return true
         }
-        
-        return true
+        return false
     }
     
 }
