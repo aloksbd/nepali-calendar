@@ -30,6 +30,10 @@ public final class DateConverter {
             return false
         }
         
+        if year != 2078 {
+            return false
+        }
+        
         return true
     }
     

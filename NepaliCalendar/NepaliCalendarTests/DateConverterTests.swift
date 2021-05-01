@@ -32,4 +32,11 @@ class DateConverterTests: XCTestCase {
         
         try? daysGreaterThan32.forEach { XCTAssertThrowsError(try sut.bSToAD(day: $0, month: 1, year: 0)) }
     }
+    
+    func test_bSToAd_throwsErrorWhenYearIsNotThisYear() {
+        let invalidYears = [1, 2077, 2079, 100000]
+        let sut = DateConverter()
+        
+        try? invalidYears.forEach { XCTAssertThrowsError(try sut.bSToAD(day: $0, month: 1, year: $0)) }
+    }
 }
