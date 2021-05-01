@@ -21,6 +21,11 @@ public final class DateConverter {
         if day == 0 || month == 0 {
             return false
         }
+        
+        if month > 12 {
+            return false
+        }
+        
         return true
     }
     

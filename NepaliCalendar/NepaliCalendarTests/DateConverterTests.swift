@@ -18,4 +18,10 @@ class DateConverterTests: XCTestCase {
         XCTAssertThrowsError(try sut.bSToAD(day: day, month: month, year: 0))
     }
     
+    func test_bSToAd_throwsErrorWhenMonthIsGreaterThan12() {
+        let month = 13
+        let sut = DateConverter()
+        
+        XCTAssertThrowsError(try sut.bSToAD(day: 1, month: month, year: 0))
+    }
 }
