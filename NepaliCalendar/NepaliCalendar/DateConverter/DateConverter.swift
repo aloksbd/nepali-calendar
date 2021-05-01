@@ -9,22 +9,22 @@ public final class DateConverter {
     
     public init() {}
     
-    public func bSToAD(day: Int, month: Int, year: Int) throws -> (day: Int, month: Int, year: Int) {
-        if !validateDate(day: day, month: month, year: year) {
+    public func bSToAD(date: NCDate) throws -> (day: Int, month: Int, year: Int) {
+        if !validateDate(date: date) {
             throw NSError()
         }
         
         return (0,0,0)
     }
     
-    private func validateDate(day: Int, month: Int, year: Int) -> Bool {
-        return validateRange(day: day, month: month, year: year)
+    private func validateDate(date: NCDate) -> Bool {
+        return validateRange(date: date)
     }
     
-    private func validateRange(day: Int, month: Int, year: Int) -> Bool {
-        if validateDay(day),
-           validateMonth(month),
-           validateYear(year){
+    private func validateRange(date: NCDate) -> Bool {
+        if validateDay(date.day),
+           validateMonth(date.month),
+           validateYear(date.year){
             return true
         }
         

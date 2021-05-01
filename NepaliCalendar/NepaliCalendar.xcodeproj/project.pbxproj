@@ -11,6 +11,7 @@
 		5C5FEAB9263D3E1300BD0058 /* NepaliCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5FEAA4263D3DD500BD0058 /* NepaliCalendar.framework */; };
 		5C5FEAC4263D3EF000BD0058 /* DateConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEAC3263D3EF000BD0058 /* DateConverterTests.swift */; };
 		5C5FEAC9263D3F3300BD0058 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEAC8263D3F3300BD0058 /* DateConverter.swift */; };
+		5C5FEACD263D48BB00BD0058 /* NCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEACC263D48BB00BD0058 /* NCDate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		5C5FEAB8263D3E1300BD0058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C5FEAC3263D3EF000BD0058 /* DateConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverterTests.swift; sourceTree = "<group>"; };
 		5C5FEAC8263D3F3300BD0058 /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		5C5FEACC263D48BB00BD0058 /* NCDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCDate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				5C5FEAC8263D3F3300BD0058 /* DateConverter.swift */,
+				5C5FEACC263D48BB00BD0058 /* NCDate.swift */,
 			);
 			path = DateConverter;
 			sourceTree = "<group>";
@@ -207,6 +210,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C5FEACD263D48BB00BD0058 /* NCDate.swift in Sources */,
 				5C5FEAC9263D3F3300BD0058 /* DateConverter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
