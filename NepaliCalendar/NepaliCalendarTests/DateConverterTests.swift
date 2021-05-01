@@ -30,14 +30,14 @@ class DateConverterTests: XCTestCase {
         try? daysGreaterThan32.forEach { XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: $0, month: 1, year: 0))) }
     }
     
-    func test_bSToAd_throwsErrorWhenYearIsNotThisYear() {
-        let invalidYears = [1, 2077, 2079, 100000]
+    func test_bSToAd_throwsErrorWhenYearIsNotInRange() {
+        let invalidYears = [1, 100, 5000, 100000, 1999, 2091]
         
-        try? invalidYears.forEach { XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: $0, month: 1, year: $0))) }
+        try? invalidYears.forEach { XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: 1, month: 1, year: $0))) }
     }
     
     func test_bSToAd_throwsErrorWhenDayIsInvalidForGivenMonthOfYear() {
-        let invalidDaysForMonthOfYear = [(32, 2, 2078), (30, 8, 2078), (31, 12, 2078)]
+        let invalidDaysForMonthOfYear = [(32, 2, 2078), (30, 8, 2079), (30, 10, 2080)]
         
         try? invalidDaysForMonthOfYear.forEach { (day, month, year) in
             XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: day, month: month, year: year)))
