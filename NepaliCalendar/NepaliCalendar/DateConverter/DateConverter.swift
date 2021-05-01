@@ -26,6 +26,10 @@ public final class DateConverter {
             return false
         }
         
+        if day > 32 {
+            return false
+        }
+        
         return true
     }
     
