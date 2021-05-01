@@ -11,24 +11,25 @@ import NepaliCalendar
 class DateConverterTests: XCTestCase {
     
     func test_bSToAD_throwsErrorWhenDayOrMonthIsLessThanOne() {
-        let month = -1
-        let day = -1
+        let datesLessThanOne = [(0, 0), (-1, -1), (-10, -10)]
         let sut = DateConverter()
         
-        XCTAssertThrowsError(try sut.bSToAD(day: day, month: month, year: 0))
+        try? datesLessThanOne.forEach { (day, month) in
+            XCTAssertThrowsError(try sut.bSToAD(day: day, month: month, year: 0))
+        }
     }
     
     func test_bSToAd_throwsErrorWhenMonthIsGreaterThan12() {
-        let month = 13
+        let monthsGreaterThan12 = [13, 24, 100]
         let sut = DateConverter()
         
-        XCTAssertThrowsError(try sut.bSToAD(day: 1, month: month, year: 0))
+        try? monthsGreaterThan12.forEach { XCTAssertThrowsError(try sut.bSToAD(day: 1, month: $0, year: 0)) }
     }
     
     func test_bSToAd_throwsErrorWhenDayIsGreaterThan32() {
-        let day = 33
+        let daysGreaterThan32 = [33, 40, 100]
         let sut = DateConverter()
         
-        XCTAssertThrowsError(try sut.bSToAD(day: day, month: 1, year: 0))
+        try? daysGreaterThan32.forEach { XCTAssertThrowsError(try sut.bSToAD(day: $0, month: 1, year: 0)) }
     }
 }
