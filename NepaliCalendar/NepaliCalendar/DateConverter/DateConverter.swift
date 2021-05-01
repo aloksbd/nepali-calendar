@@ -18,7 +18,7 @@ public final class DateConverter {
     }
     
     private func validateDateFormat(day: Int, month: Int, year: Int) -> Bool {
-        if day == 0 || month == 0 {
+        if day < 1 || month < 1 {
             return false
         }
         

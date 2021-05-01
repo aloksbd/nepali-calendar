@@ -10,9 +10,9 @@ import NepaliCalendar
 
 class DateConverterTests: XCTestCase {
     
-    func test_bSToAD_throwsErrorWhenDayOrMonthIsZero() {
-        let month = 0
-        let day = 0
+    func test_bSToAD_throwsErrorWhenDayOrMonthIsLessThanOne() {
+        let month = -1
+        let day = -1
         let sut = DateConverter()
         
         XCTAssertThrowsError(try sut.bSToAD(day: day, month: month, year: 0))
