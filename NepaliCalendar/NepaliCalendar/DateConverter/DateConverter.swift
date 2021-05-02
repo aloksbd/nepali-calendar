@@ -8,14 +8,14 @@
 public final class DateConverter {
     
     public static func bSToAD(date: NCDate) throws -> (day: Int, month: Int, year: Int) {
-        if !validateDate(date: date) {
+        if !validateDate(date) {
             throw NSError()
         }
         
         return (0,0,0)
     }
     
-    private static func validateDate(date: NCDate) -> Bool {
+    private static func validateDate(_ date: NCDate) -> Bool {
         if let daysInMonth = BSDates.bs[date.year],
            validateMonth(date.month) && validateDay(date.day) {
             let dateAsIndexForBS = date.month - 1
