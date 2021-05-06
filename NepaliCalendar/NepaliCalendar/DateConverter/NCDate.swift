@@ -5,7 +5,8 @@
 //  Created by alok subedi on 01/05/2021.
 //
 
-public struct NCDate {
+public struct NCDate: Equatable {
+    
     public let day: Int
     public let month: Int
     public let year: Int
@@ -15,4 +16,5 @@ public struct NCDate {
         self.month = month
         self.year = year
     }
+    
 }
