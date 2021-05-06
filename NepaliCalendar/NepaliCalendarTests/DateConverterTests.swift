@@ -44,6 +44,12 @@ class DateConverterTests: XCTestCase {
         }
     }
     
+    func test_bsToAd_returnConvertedDate() {
+        validNCDates().forEach { (dateToBeConverted, expectedDate) in
+            XCTAssertEqual(try? DateConverter.bSToAD(date: dateToBeConverted), expectedDate)
+        }
+    }
+    
     //MARK: Helpers
     
     private var anyValidDay: Int {
@@ -58,4 +64,11 @@ class DateConverterTests: XCTestCase {
         2078
     }
     
+    private func validNCDates() -> [(datesToBeConverted: NCDate, expectedDates: NCDate)] {
+        return [
+            (NCDate(day: 01, month: 01, year: 2000), NCDate(day: 14, month: 04, year: 1943)),
+            (NCDate(day: 19, month: 12, year: 2052), NCDate(day: 1, month: 04, year: 1996)),
+            (NCDate(day: 10, month: 6, year: 2049), NCDate(day: 26, month: 09, year: 1992))
+        ]
+    }
 }
