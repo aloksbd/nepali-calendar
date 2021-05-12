@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		501050E9263D676C00C1E74B /* BSDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501050E8263D676C00C1E74B /* BSDates.swift */; };
+		5C31B297264C24FE0024D9CC /* NCDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C31B296264C24FE0024D9CC /* NCDateTests.swift */; };
 		5C5FEAA9263D3DD500BD0058 /* NepaliCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C5FEAA7263D3DD500BD0058 /* NepaliCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C5FEAB9263D3E1300BD0058 /* NepaliCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5FEAA4263D3DD500BD0058 /* NepaliCalendar.framework */; };
 		5C5FEAC4263D3EF000BD0058 /* DateConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEAC3263D3EF000BD0058 /* DateConverterTests.swift */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		501050E8263D676C00C1E74B /* BSDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSDates.swift; sourceTree = "<group>"; };
+		5C31B296264C24FE0024D9CC /* NCDateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCDateTests.swift; sourceTree = "<group>"; };
 		5C5FEAA4263D3DD500BD0058 /* NepaliCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NepaliCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C5FEAA7263D3DD500BD0058 /* NepaliCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NepaliCalendar.h; sourceTree = "<group>"; };
 		5C5FEAA8263D3DD500BD0058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 			children = (
 				5C5FEAB8263D3E1300BD0058 /* Info.plist */,
 				5C5FEAC3263D3EF000BD0058 /* DateConverterTests.swift */,
+				5C31B296264C24FE0024D9CC /* NCDateTests.swift */,
 			);
 			path = NepaliCalendarTests;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C31B297264C24FE0024D9CC /* NCDateTests.swift in Sources */,
 				5C5FEAC4263D3EF000BD0058 /* DateConverterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

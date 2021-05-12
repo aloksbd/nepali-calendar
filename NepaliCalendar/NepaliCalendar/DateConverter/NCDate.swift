@@ -17,4 +17,11 @@ public struct NCDate: Equatable {
         self.year = year
     }
     
+    public init(from date: Date) {
+        let components = Calendar.current.dateComponents([.day,.month,.year], from: date)
+        
+        day = components.day!
+        month = components.month!
+        year = components.year!
+    }
 }
