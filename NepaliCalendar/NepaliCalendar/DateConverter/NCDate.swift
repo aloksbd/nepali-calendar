@@ -17,11 +17,16 @@ public struct NCDate: Equatable {
         self.year = year
     }
     
-    public init(from date: Date) {
-        let components = Calendar.current.dateComponents([.day,.month,.year], from: date)
+    public init(from date: Date, timeZone: TimeZone = .current) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MM dd"
+
+        let dateString = dateFormatter.string(from: date)
+        let dateComponents = dateString.split(separator: " ").map { Int($0)! }
         
-        day = components.day!
-        month = components.month!
-        year = components.year!
+        day = dateComponents[2]
+        month = dateComponents[1]
+        year = dateComponents[0]
     }
+    
 }
