@@ -23,7 +23,7 @@ public final class DateConverter {
         let timestamp = totalDays(from: date) * 24 * 60 * 60
         let convertedDate =  Date(timeInterval: TimeInterval(timestamp), since: firstDateInAD)
         
-        return try ncDate(from: convertedDate)
+        return NCDate(from: convertedDate)
     }
     
     private static func totalDays(from date: NCDate) -> Int {
@@ -40,19 +40,6 @@ public final class DateConverter {
         totalDays += date.day
         
         return totalDays
-    }
-    
-    private static func ncDate(from date: Date) throws -> NCDate {
-        let components = Calendar.current.dateComponents([.day,.month,.year], from: date)
-        
-        guard let convertedDay = components.day,
-              let convertedMonth = components.month,
-              let convertedYear = components.year
-        else {
-            throw Error.invalidRange
-        }
-        
-        return NCDate(day: convertedDay, month: convertedMonth, year: convertedYear)
     }
     
     private static func validateDate(_ date: NCDate) -> Bool {
