@@ -29,10 +29,11 @@ public struct NCDate: Equatable {
         year = dateComponents[0]
     }
     
-    public func date() throws -> Date {
+    public func date(timeZone: TimeZone = .current) throws -> Date {
         let NCDateString = "\(day) \(month) \(year)"
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MM dd"
+        dateFormatter.timeZone = timeZone
+        dateFormatter.dateFormat = "dd MM yyyy"
         
         guard let date = dateFormatter.date(from: NCDateString) else {
             throw NSError()

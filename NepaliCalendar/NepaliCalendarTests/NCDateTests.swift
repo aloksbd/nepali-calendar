@@ -23,10 +23,24 @@ class NCDateTests: XCTestCase {
             NCDate(day: 23, month: 32, year: 2020),
             NCDate(day: 90, month: 12, year: 2020),
             NCDate(day: 12, month: 32, year: 2020),
-            NCDate(day: 12, month: 12, year: 50000)
         ]
         
         try? invalidNCDates.forEach { XCTAssertThrowsError(try $0.date()) }
     }
+    
+    func test_convertNCDateToDate_returnsConvertedDate() {
+        validNCDates().forEach { (sut, expectedDate) in
+            XCTAssertEqual(try? sut.date(timeZone: TimeZone(identifier: "GMT")!), expectedDate)
+        }
+    }
 
+    private func validNCDates() -> [(datesToBeConverted: NCDate, expectedDates: Date)] {
+        return [
+            (NCDate(day: 1, month: 12, year: 2020), Date(timeIntervalSince1970: TimeInterval(1606780800))),
+            (NCDate(day: 6, month: 12, year: 9999), Date(timeIntervalSince1970: TimeInterval(253400054400))),
+            (NCDate(day: 5, month: 1, year: 1111), Date(timeIntervalSince1970: TimeInterval(-27106531200))),
+            (NCDate(day: 13, month: 5, year: 50000), Date(timeIntervalSince1970: TimeInterval(1515691872000))),
+        ]
+    }
+    
 }
