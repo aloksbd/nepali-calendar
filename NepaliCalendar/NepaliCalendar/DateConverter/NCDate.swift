@@ -20,6 +20,7 @@ public struct NCDate: Equatable {
     public init(from date: Date, timeZone: TimeZone = .current) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy MM dd"
+        dateFormatter.timeZone = timeZone
 
         let dateString = dateFormatter.string(from: date)
         let dateComponents = dateString.split(separator: " ").map { Int($0)! }
