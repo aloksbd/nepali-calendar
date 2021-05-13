@@ -29,4 +29,15 @@ public struct NCDate: Equatable {
         year = dateComponents[0]
     }
     
+    public func date() throws -> Date {
+        let NCDateString = "\(day) \(month) \(year)"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MM dd"
+        
+        guard let date = dateFormatter.date(from: NCDateString) else {
+            throw NSError()
+        }
+        return date
+    }
+    
 }

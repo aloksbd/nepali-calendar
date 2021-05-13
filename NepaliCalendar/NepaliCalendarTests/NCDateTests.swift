@@ -17,4 +17,16 @@ class NCDateTests: XCTestCase {
         
         XCTAssertEqual(sut, expectedNCDate)
     }
+    
+    func test_convertNCDateToDate_throwsInvalidDateOnInvalidNCDate() {
+        let invalidNCDates = [
+            NCDate(day: 23, month: 32, year: 2020),
+            NCDate(day: 90, month: 12, year: 2020),
+            NCDate(day: 12, month: 32, year: 2020),
+            NCDate(day: 12, month: 12, year: 50000)
+        ]
+        
+        try? invalidNCDates.forEach { XCTAssertThrowsError(try $0.date()) }
+    }
+
 }
