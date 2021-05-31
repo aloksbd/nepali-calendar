@@ -29,15 +29,33 @@ public final class DateConverter {
     public static func ADToBS(date: NCDate) throws -> NCDate {
         if !validateDay(date.day) ||
            !validateMonth(date.month) ||
-           !(date.year > 1943 && date.year < 2033) {
+           !(date.year >= 1943 && date.year <= 2033) {
             throw Error.invalidRange
         }
-//        
-//        let timestamp = totalDays(from: date) * 24 * 60 * 60
-//        let convertedDate =  Date(timeInterval: TimeInterval(timestamp), since: firstDateInAD)
-//        
-//        return NCDate(from: convertedDate)
-        return NCDate(day: 0, month: 0, year: 0)
+        
+        let interval = try! date.date().timeIntervalSince(firstDateInAD)
+        let days = Int(interval / 24 / 60 / 60) + 1
+        
+        return try BSFrom(days: days)
+    }
+    
+    private static func BSFrom(days: Int) throws -> NCDate {
+        var totalDays = 0
+        for (key, val) in BSDates.bs.sorted(by: { $0.key < $1.key }) {
+            totalDays += val.reduce(0, +)
+            if totalDays > days {
+                totalDays -= val.reduce(0, +)
+                for i in 0..<12 {
+                    totalDays += val[i]
+                    if totalDays > days {
+                        let day = val[i] - totalDays + days
+                        return NCDate(day: day, month: i + 1, year: key)
+                    }
+                }
+            }
+        }
+        
+        throw Error.invalidRange
     }
     
     private static func totalDays(from date: NCDate) -> Int {

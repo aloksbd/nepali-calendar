@@ -53,7 +53,7 @@ class DateConverterTests: XCTestCase {
     func test_ADToBS_throwsErrorWhenDayOrMonthIsLessThanOne() {
         let datesLessThanOne = [(0, 0), (-1, -1), (-10, -10), (1, -1), (-1, 2)]
         
-        try? [(1,-1)].forEach { (day, month) in
+        try? datesLessThanOne.forEach { (day, month) in
             XCTAssertThrowsError(try DateConverter.ADToBS(date: NCDate(day: day, month: month, year: anyValidYear)))
         }
     }
@@ -83,12 +83,12 @@ class DateConverterTests: XCTestCase {
             XCTAssertThrowsError(try DateConverter.ADToBS(date: NCDate(day: day, month: month, year: year)))
         }
     }
-//
-//    func test_bsToAd_returnConvertedDate() {
-//        validNCDates().forEach { (dateToBeConverted, expectedDate) in
-//            XCTAssertEqual(try? DateConverter.bSToAD(date: dateToBeConverted), expectedDate)
-//        }
-//    }
+
+    func test_ADToBS_returnConvertedDate() {
+        validNCDates().forEach { (expectedDate, dateToBeConverted) in
+            XCTAssertEqual(try? DateConverter.ADToBS(date: dateToBeConverted), expectedDate)
+        }
+    }
     
     //MARK: Helpers
     
@@ -104,7 +104,7 @@ class DateConverterTests: XCTestCase {
         2000
     }
     
-    private func validNCDates() -> [(datesToBeConverted: NCDate, expectedDates: NCDate)] {
+    private func validNCDates() -> [(BS: NCDate, AD: NCDate)] {
         return [
             (NCDate(day: 01, month: 01, year: 2000), NCDate(day: 14, month: 04, year: 1943)),
             (NCDate(day: 19, month: 12, year: 2052), NCDate(day: 1, month: 04, year: 1996)),
