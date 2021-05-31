@@ -26,6 +26,20 @@ public final class DateConverter {
         return NCDate(from: convertedDate)
     }
     
+    public static func ADToBS(date: NCDate) throws -> NCDate {
+        if !validateDay(date.day) ||
+           !validateMonth(date.month) ||
+           !(date.year > 1943 && date.year < 2033) {
+            throw Error.invalidRange
+        }
+//        
+//        let timestamp = totalDays(from: date) * 24 * 60 * 60
+//        let convertedDate =  Date(timeInterval: TimeInterval(timestamp), since: firstDateInAD)
+//        
+//        return NCDate(from: convertedDate)
+        return NCDate(day: 0, month: 0, year: 0)
+    }
+    
     private static func totalDays(from date: NCDate) -> Int {
         var totalDays = 0
         for (key, val) in BSDates.bs.sorted(by: { $0.key < $1.key }) {
