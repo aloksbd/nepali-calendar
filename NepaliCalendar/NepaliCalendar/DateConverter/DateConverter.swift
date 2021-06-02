@@ -16,34 +16,37 @@ public final class DateConverter {
     }
     
     public static func bSToAD(date: NCDate) throws -> NCDate {
-        if !validateDate(date) {
+        if !DateValidator.validateBSDate(date) {
             throw Error.invalidRange
         }
         
-        let timestamp = totalDays(from: date) * 24 * 60 * 60
+        let timestamp = daysCount(toBSDate: date) * 24 * 60 * 60
         let convertedDate =  Date(timeInterval: TimeInterval(timestamp), since: firstDateInAD)
         
         return NCDate(from: convertedDate)
     }
     
     public static func ADToBS(date: NCDate) throws -> NCDate {
-        if !validateDay(date.day) ||
-           !validateMonth(date.month) ||
-           !(date.year >= 1943 && date.year <= 2033) {
+        guard DateValidator.validateADDate(date),
+              let days = try? daysCount(toADDate: date) else {
             throw Error.invalidRange
         }
         
+        return try BSFrom(days: days)
+    }
+    
+    private static func daysCount(toADDate date: NCDate) throws -> Int {
         guard let interval = try? date.date().timeIntervalSince(firstDateInAD) else {
             throw Error.invalidRange
         }
+        
         let daysInFraction = interval / 24 / 60 / 60
     
         if daysInFraction < 0 {
             throw Error.invalidRange
         }
         
-        let days = Int(daysInFraction) + 1
-        return try BSFrom(days: days)
+        return Int(daysInFraction) + 1
     }
     
     private static func BSFrom(days: Int) throws -> NCDate {
@@ -65,7 +68,7 @@ public final class DateConverter {
         throw Error.invalidRange
     }
     
-    private static func totalDays(from date: NCDate) -> Int {
+    private static func daysCount(toBSDate date: NCDate) -> Int {
         var totalDays = 0
         for (key, val) in BSDates.bs.sorted(by: { $0.key < $1.key }) {
             if key == date.year {
@@ -79,36 +82,6 @@ public final class DateConverter {
         totalDays += date.day
         
         return totalDays
-    }
-    
-    private static func validateDate(_ date: NCDate) -> Bool {
-        if let daysInMonth = BSDates.bs[date.year],
-           validateMonth(date.month) && validateDay(date.day) {
-            let dateAsIndexForBS = date.month - 1
-            if date.day <= daysInMonth[dateAsIndexForBS] {
-                return true
-            }
-        }
-        
-        return false
-    }
-    
-    private static func validateDay(_ day: Int) -> Bool {
-        let validDays = (1...32)
-        if validDays.contains(day) {
-            return true
-        }
-        
-        return false
-    }
-    
-    private static func validateMonth(_ month: Int) -> Bool {
-        let validMonths = (1...12)
-        if validMonths.contains(month) {
-            return true
-        }
-        
-        return false
     }
     
 }
