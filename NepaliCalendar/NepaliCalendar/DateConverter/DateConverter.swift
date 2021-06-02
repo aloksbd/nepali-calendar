@@ -11,15 +11,19 @@ public final class DateConverter {
         return Date(timeIntervalSince1970: -843264000)
     }
     
+    public enum Error: Swift.Error {
+        case invalidRange
+    }
+    
     public static func bSToAD(date: NCDate) throws -> NCDate {
         if !validateDate(date) {
-            throw NSError()
+            throw Error.invalidRange
         }
         
         let timestamp = totalDays(from: date) * 24 * 60 * 60
         let convertedDate =  Date(timeInterval: TimeInterval(timestamp), since: firstDateInAD)
         
-        return try ncDate(from: convertedDate)
+        return NCDate(from: convertedDate)
     }
     
     private static func totalDays(from date: NCDate) -> Int {
@@ -36,19 +40,6 @@ public final class DateConverter {
         totalDays += date.day
         
         return totalDays
-    }
-    
-    private static func ncDate(from date: Date) throws -> NCDate {
-        let components = Calendar.current.dateComponents([.day,.month,.year], from: date)
-        
-        guard let convertedDay = components.day,
-              let convertedMonth = components.month,
-              let convertedYear = components.year
-        else {
-            throw NSError()
-        }
-        
-        return NCDate(day: convertedDay, month: convertedMonth, year: convertedYear)
     }
     
     private static func validateDate(_ date: NCDate) -> Bool {
