@@ -77,7 +77,7 @@ class DateConverterTests: XCTestCase {
     }
 
     func test_ADToBS_throwsErrorWhenDayIsInvalidForGivenMonthOfYear() {
-        let invalidDaysForMonthOfYear = [(32, 2, 2078), (30, 8, 2079), (30, 10, 2080)]
+        let invalidDaysForMonthOfYear = [(30, 2, 2020), (32, 8, 1943), (31, 4, 2030)]
 
         try? invalidDaysForMonthOfYear.forEach { (day, month, year) in
             XCTAssertThrowsError(try DateConverter.ADToBS(date: NCDate(day: day, month: month, year: year)))
