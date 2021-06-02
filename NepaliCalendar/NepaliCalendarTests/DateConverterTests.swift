@@ -83,6 +83,14 @@ class DateConverterTests: XCTestCase {
             XCTAssertThrowsError(try DateConverter.ADToBS(date: NCDate(day: day, month: month, year: year)))
         }
     }
+    
+    func test_ADToBS_throwsErrorWhenGivenDayAndMonthIsNotInRange() {
+        let invalidDaysForMonthOfYear = [(20, 8, 1933), (13, 4, 1943), (14, 4, 2034), (10, 10, 3000)]
+
+        try? invalidDaysForMonthOfYear.forEach { (day, month, year) in
+            XCTAssertThrowsError(try DateConverter.ADToBS(date: NCDate(day: day, month: month, year: year)))
+        }
+    }
 
     func test_ADToBS_returnConvertedDate() {
         validNCDates().forEach { (expectedDate, dateToBeConverted) in

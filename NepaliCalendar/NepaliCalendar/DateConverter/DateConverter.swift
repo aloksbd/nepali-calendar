@@ -36,8 +36,13 @@ public final class DateConverter {
         guard let interval = try? date.date().timeIntervalSince(firstDateInAD) else {
             throw Error.invalidRange
         }
-        let days = Int(interval / 24 / 60 / 60) + 1
+        let daysInFraction = interval / 24 / 60 / 60
+    
+        if daysInFraction < 0 {
+            throw Error.invalidRange
+        }
         
+        let days = Int(daysInFraction) + 1
         return try BSFrom(days: days)
     }
     
