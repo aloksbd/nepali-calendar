@@ -7,8 +7,24 @@
 
 public final class DateConverter {
     
+    private static var firstDateInADInString: String { "1943 04 14" }
+    
+    private static func dateFromDateString(timeZone: TimeZone) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy MM dd"
+        dateFormatter.timeZone = timeZone
+        let dateInCurrentTimeZone = dateFormatter.date(from: firstDateInADInString)!
+        return dateInCurrentTimeZone
+    }
+    
     private static var firstDateInAD: Date {
-        return Date(timeIntervalSince1970: -843264000)
+        return dateFromDateString(timeZone: .current)
+    }
+    
+    private static var differenceInTimeZone: TimeInterval {
+        let date = dateFromDateString(timeZone: TimeZone(identifier: "UTC") ?? .current)
+        let difference = date.timeIntervalSince1970 - firstDateInAD.timeIntervalSince1970
+        return abs(Double(difference))
     }
     
     public enum Error: Swift.Error {
@@ -40,7 +56,7 @@ public final class DateConverter {
             throw Error.invalidRange
         }
         
-        let daysInFraction = interval / 24 / 60 / 60
+        let daysInFraction = (interval+differenceInTimeZone) / 24 / 60 / 60
     
         if daysInFraction < 0 {
             throw Error.invalidRange
@@ -81,7 +97,7 @@ public final class DateConverter {
         }
         totalDays += date.day
         
-        return totalDays
+        return totalDays - 1
     }
     
 }
