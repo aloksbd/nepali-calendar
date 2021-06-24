@@ -14,6 +14,7 @@
 		5C5FEAC4263D3EF000BD0058 /* DateConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEAC3263D3EF000BD0058 /* DateConverterTests.swift */; };
 		5C5FEAC9263D3F3300BD0058 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEAC8263D3F3300BD0058 /* DateConverter.swift */; };
 		5C5FEACD263D48BB00BD0058 /* NCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEACC263D48BB00BD0058 /* NCDate.swift */; };
+		5CFB60D52667E88600088D69 /* DateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFB60D42667E88600088D69 /* DateValidator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +38,7 @@
 		5C5FEAC3263D3EF000BD0058 /* DateConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverterTests.swift; sourceTree = "<group>"; };
 		5C5FEAC8263D3F3300BD0058 /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		5C5FEACC263D48BB00BD0058 /* NCDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCDate.swift; sourceTree = "<group>"; };
+		5CFB60D42667E88600088D69 /* DateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				5C5FEAC8263D3F3300BD0058 /* DateConverter.swift */,
 				5C5FEACC263D48BB00BD0058 /* NCDate.swift */,
 				501050E8263D676C00C1E74B /* BSDates.swift */,
+				5CFB60D42667E88600088D69 /* DateValidator.swift */,
 			);
 			path = DateConverter;
 			sourceTree = "<group>";
@@ -218,6 +221,7 @@
 			files = (
 				5C5FEACD263D48BB00BD0058 /* NCDate.swift in Sources */,
 				5C5FEAC9263D3F3300BD0058 /* DateConverter.swift in Sources */,
+				5CFB60D52667E88600088D69 /* DateValidator.swift in Sources */,
 				501050E9263D676C00C1E74B /* BSDates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -370,7 +374,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8LYCVWMX59;
+				DEVELOPMENT_TEAM = 95T69XHSY5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -397,7 +401,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 8LYCVWMX59;
+				DEVELOPMENT_TEAM = 95T69XHSY5;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -423,7 +427,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8LYCVWMX59;
+				DEVELOPMENT_TEAM = 95T69XHSY5;
 				INFOPLIST_FILE = NepaliCalendarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -444,7 +448,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 8LYCVWMX59;
+				DEVELOPMENT_TEAM = 95T69XHSY5;
 				INFOPLIST_FILE = NepaliCalendarTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
