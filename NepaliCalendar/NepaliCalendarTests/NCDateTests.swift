@@ -23,7 +23,8 @@ class NCDateTests: XCTestCase {
         let invalidNCDates = [
             NCDate(day: 23, month: 32, year: 2020),
             NCDate(day: 90, month: 12, year: 2020),
-            NCDate(day: 12, month: 32, year: 2020),
+            NCDate(day: 12, month: 0, year: 2020),
+            NCDate(day: -1, month: 12, year: 2020),
         ]
         
         try? invalidNCDates.forEach { XCTAssertThrowsError(try $0.date()) }
