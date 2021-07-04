@@ -7,9 +7,10 @@
 
 class DateValidator {
     static func validateADDate(_ date: NCDate) -> Bool {
+        let validADYear = (date.year >= 1943 && date.year <= 2033)
         if !validateDay(date.day) ||
             !validateMonth(date.month) ||
-            !(date.year >= 1943 && date.year <= 2033) {
+            !validADYear {
             return false
         }
         return true
