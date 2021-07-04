@@ -17,10 +17,10 @@ class DateValidator {
     }
     
     static func validateBSDate(_ date: NCDate) -> Bool {
-        if let daysInMonth = BSDates.bs[date.year],
+        if let daysInMonths = BSDates.bs[date.year],
            validateMonth(date.month) && validateDay(date.day) {
-            let dateAsIndexForBS = date.month - 1
-            if date.day <= daysInMonth[dateAsIndexForBS] {
+            let monthIndex = date.month - 1
+            if date.day <= daysInMonths[monthIndex] {
                 return true
             }
         }
