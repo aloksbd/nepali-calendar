@@ -36,7 +36,7 @@ class NCDateTests: XCTestCase {
         }
     }
 
-    private func validNCDates() -> [(datesToBeConverted: NCDate, expectedDates: Date)] {
+    private func validNCDates() -> [(dateToBeConverted: NCDate, expectedDate: Date)] {
         return [
             (NCDate(day: 1, month: 12, year: 2020), Date(timeIntervalSince1970: TimeInterval(1606780800))),
             (NCDate(day: 6, month: 12, year: 9999), Date(timeIntervalSince1970: TimeInterval(253400054400))),
