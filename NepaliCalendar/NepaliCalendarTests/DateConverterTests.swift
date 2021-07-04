@@ -46,7 +46,7 @@ class DateConverterTests: XCTestCase {
         }
     }
     
-    func test_BSToAD_returnConvertedDate() {
+    func test_BSToAD_returnsConvertedDate() {
         validNCDates().forEach { (dateToBeConverted, expectedDate) in
             let receivedDate = try? DateConverter.bSToAD(date: dateToBeConverted)
             XCTAssertEqual(receivedDate, expectedDate)
@@ -98,7 +98,7 @@ class DateConverterTests: XCTestCase {
         }
     }
 
-    func test_ADToBS_returnConvertedDate() {
+    func test_ADToBS_returnsConvertedDate() {
         validNCDates().forEach { (expectedDate, dateToBeConverted) in
             let receivedDate = try? DateConverter.ADToBS(date: dateToBeConverted)
             XCTAssertEqual(receivedDate, expectedDate)
