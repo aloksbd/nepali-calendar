@@ -29,7 +29,7 @@ public final class DateConverter {
         case invalidRange
     }
     
-    public static func bSToAD(date: NCDate) throws -> NCDate {
+    public static func BSToAD(date: NCDate) throws -> NCDate {
         if !DateValidator.validateBSDate(date) {
             throw Error.invalidRange
         }
