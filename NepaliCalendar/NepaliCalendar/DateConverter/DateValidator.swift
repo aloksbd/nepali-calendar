@@ -24,7 +24,6 @@ class DateValidator {
                 return true
             }
         }
-        
         return false
     }
     
@@ -33,7 +32,6 @@ class DateValidator {
         if validDays.contains(day) {
             return true
         }
-        
         return false
     }
     
@@ -42,7 +40,6 @@ class DateValidator {
         if validMonths.contains(month) {
             return true
         }
-        
         return false
     }
 }
