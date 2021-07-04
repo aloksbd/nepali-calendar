@@ -10,24 +10,16 @@ import NepaliCalendar
 
 class DateConverterTests: XCTestCase {
     
-    func test_bSToAD_throwsErrorWhenDayOrMonthIsLessThanOne() {
-        let datesLessThanOne = [(0, 0), (-1, -1), (-10, -10), (1, -1), (-1, 2)]
+    func test_bSToAd_throwsErrorForInvalidMonths() {
+        let invalidMonths = invalidMonths()
         
-        try? datesLessThanOne.forEach { (day, month) in
-            XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: day, month: month, year: anyValidYear)))
-        }
+        try? invalidMonths.forEach { XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: anyValidDay, month: $0, year: anyValidYear))) }
     }
     
-    func test_bSToAd_throwsErrorWhenMonthIsGreaterThan12() {
-        let monthsGreaterThan12 = [13, 24, 100]
+    func test_bSToAd_throwsErrorForInvalidDays() {
+        let invalidDays = invalidDays()
         
-        try? monthsGreaterThan12.forEach { XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: anyValidDay, month: $0, year: anyValidYear))) }
-    }
-    
-    func test_bSToAd_throwsErrorWhenDayIsGreaterThan32() {
-        let daysGreaterThan32 = [33, 40, 100]
-        
-        try? daysGreaterThan32.forEach { XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: $0, month: anyValidMonth, year: anyValidYear))) }
+        try? invalidDays.forEach { XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: $0, month: anyValidMonth, year: anyValidYear))) }
     }
     
     func test_bSToAd_throwsErrorWhenYearIsNotInRange() {
@@ -49,25 +41,17 @@ class DateConverterTests: XCTestCase {
             XCTAssertEqual(try? DateConverter.bSToAD(date: dateToBeConverted), expectedDate)
         }
     }
-    
-    func test_ADToBS_throwsErrorWhenDayOrMonthIsLessThanOne() {
-        let datesLessThanOne = [(0, 0), (-1, -1), (-10, -10), (1, -1), (-1, 2)]
-        
-        try? datesLessThanOne.forEach { (day, month) in
-            XCTAssertThrowsError(try DateConverter.ADToBS(date: NCDate(day: day, month: month, year: anyValidYear)))
-        }
+
+    func test_ADToBS_throwsErrorForInvalidMonths() {
+        let invalidMonths = invalidMonths()
+
+        try? invalidMonths.forEach { XCTAssertThrowsError(try DateConverter.ADToBS(date: NCDate(day: anyValidDay, month: $0, year: anyValidYear))) }
     }
 
-    func test_ADToBS_throwsErrorWhenMonthIsGreaterThan12() {
-        let monthsGreaterThan12 = [13, 24, 100]
+    func test_ADToBS_throwsErrorForInvalidDays() {
+        let invalidDays = invalidDays()
 
-        try? monthsGreaterThan12.forEach { XCTAssertThrowsError(try DateConverter.ADToBS(date: NCDate(day: anyValidDay, month: $0, year: anyValidYear))) }
-    }
-
-    func test_ADToBS_throwsErrorWhenDayIsGreaterThan32() {
-        let daysGreaterThan32 = [33, 40, 100]
-
-        try? daysGreaterThan32.forEach { XCTAssertThrowsError(try DateConverter.ADToBS(date: NCDate(day: $0, month: anyValidMonth, year: anyValidYear))) }
+        try? invalidDays.forEach { XCTAssertThrowsError(try DateConverter.ADToBS(date: NCDate(day: $0, month: anyValidMonth, year: anyValidYear))) }
     }
 
     func test_ADToBS_throwsErrorWhenYearIsNotInRange() {
@@ -99,6 +83,18 @@ class DateConverterTests: XCTestCase {
     }
     
     //MARK: Helpers
+    
+    private func invalidMonths() -> [Int] {
+        let monthsGreaterThan12 = [13, 24, 100]
+        let monthsLessThanOne = [0, -1, -10]
+        return monthsGreaterThan12 + monthsLessThanOne
+    }
+    
+    private func invalidDays() -> [Int] {
+        let daysGreaterThan32 = [33, 40, 100]
+        let daysLessThanOne = [0, -1, -10]
+        return daysGreaterThan32 + daysLessThanOne
+    }
     
     private var anyValidDay: Int {
         1
