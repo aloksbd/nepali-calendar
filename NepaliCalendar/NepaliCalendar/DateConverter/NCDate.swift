@@ -21,7 +21,7 @@ public struct NCDate: Equatable {
         let dateFormatter = DateFormatter(timeZone: timeZone)
 
         let dateString = dateFormatter.string(from: date)
-        let dateComponents = dateString.split(separator: " ").map { Int($0)! }
+        let dateComponents = dateString.split(separator: " ").map { Int($0) ?? 0 }
         
         day = dateComponents[0]
         month = dateComponents[1]
