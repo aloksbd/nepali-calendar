@@ -7,12 +7,10 @@
 
 public final class DateConverter {
     
-    private static var firstDateInADInString: String { "1943 04 14" }
+    private static var firstDateInADInString: String { "14 04 1943" }
     
     private static func dateFromDateString(timeZone: TimeZone) -> Date {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy MM dd"
-        dateFormatter.timeZone = timeZone
+        let dateFormatter = DateFormatter(timeZone: timeZone)
         let dateInCurrentTimeZone = dateFormatter.date(from: firstDateInADInString)!
         return dateInCurrentTimeZone
     }

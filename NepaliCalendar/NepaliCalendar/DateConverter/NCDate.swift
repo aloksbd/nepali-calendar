@@ -37,11 +37,3 @@ public struct NCDate: Equatable {
         return date
     }
 }
-
-private extension DateFormatter {
-    convenience init(timeZone: TimeZone) {
-        self.init()
-        self.timeZone = timeZone
-        self.dateFormat = "dd MM yyyy"
-    }
-}
