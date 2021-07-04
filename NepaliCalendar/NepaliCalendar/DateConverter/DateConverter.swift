@@ -34,7 +34,8 @@ public final class DateConverter {
             throw Error.invalidRange
         }
         
-        let timestamp = daysCount(toBSDate: date) * 24 * 60 * 60
+        let timestampForOneDay = 24 * 60 * 60
+        let timestamp = daysCountSinceFirstBSDate(toBSDate: date) * timestampForOneDay
         let convertedDate =  Date(timeInterval: TimeInterval(timestamp), since: firstDateInAD)
         
         return NCDate(from: convertedDate)
@@ -82,20 +83,22 @@ public final class DateConverter {
         throw Error.invalidRange
     }
     
-    private static func daysCount(toBSDate date: NCDate) -> Int {
-        var totalDays = 0
-        for (key, val) in BSDates.bs.sorted(by: { $0.key < $1.key }) {
-            if key == date.year {
+    private static func daysCountSinceFirstBSDate(toBSDate date: NCDate) -> Int {
+        var totalDaysBeforeGivenMonth = 0
+        for (year, daysInMonths) in BSDates.bs.sorted(by: { $0.key < $1.key }) {
+            if year == date.year {
                 for i in 0..<date.month - 1 {
-                    totalDays += val[i]
+                    totalDaysBeforeGivenMonth += daysInMonths[i]
                 }
                 break
             }
-            totalDays += val.reduce(0, +)
+            let totalDaysInCurrentYear = daysInMonths.reduce(0, +)
+            totalDaysBeforeGivenMonth += totalDaysInCurrentYear
         }
-        totalDays += date.day
+        let totalDays = totalDaysBeforeGivenMonth + date.day
+        let totalDaysWhenFirstDayIsZero = totalDays - 1
         
-        return totalDays - 1
+        return totalDaysWhenFirstDayIsZero
     }
     
 }
