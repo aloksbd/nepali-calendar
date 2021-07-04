@@ -6,8 +6,11 @@
 //
 
 class DateValidator {
+    private static var firstADYear: Int { 1943 }
+    private static var lastADYear: Int { 2033 }
+    
     static func validateADDate(_ date: NCDate) -> Bool {
-        let validADYear = (date.year >= 1943 && date.year <= 2033)
+        let validADYear = (date.year >= firstADYear && date.year <= lastADYear)
         if !validateDay(date.day) ||
             !validateMonth(date.month) ||
             !validADYear {
