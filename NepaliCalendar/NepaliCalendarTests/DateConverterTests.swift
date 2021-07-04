@@ -10,25 +10,25 @@ import NepaliCalendar
 
 class DateConverterTests: XCTestCase {
     
-    func test_bSToAd_throwsErrorForInvalidMonths() {
+    func test_BSToAD_throwsErrorForInvalidMonths() {
         let invalidMonths = invalidMonths()
         
         try? invalidMonths.forEach { XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: anyValidDay, month: $0, year: anyValidYear))) }
     }
     
-    func test_bSToAd_throwsErrorForInvalidDays() {
+    func test_BSToAD_throwsErrorForInvalidDays() {
         let invalidDays = invalidDays()
         
         try? invalidDays.forEach { XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: $0, month: anyValidMonth, year: anyValidYear))) }
     }
     
-    func test_bSToAd_throwsErrorWhenYearIsNotInRange() {
+    func test_BSToAD_throwsErrorWhenYearIsNotInRange() {
         let invalidYears = [1, 100, 5000, 100000, 1999, 2091]
         
         try? invalidYears.forEach { XCTAssertThrowsError(try DateConverter.bSToAD(date: NCDate(day: anyValidDay, month: anyValidMonth, year: $0))) }
     }
     
-    func test_bSToAd_throwsErrorWhenDayIsInvalidForGivenMonthOfYear() {
+    func test_BSToAD_throwsErrorWhenDayIsInvalidForGivenMonthOfYear() {
         let invalidDaysForMonthOfYear = [(32, 2, 2078), (30, 8, 2079), (30, 10, 2080)]
         
         try? invalidDaysForMonthOfYear.forEach { (day, month, year) in
@@ -36,7 +36,7 @@ class DateConverterTests: XCTestCase {
         }
     }
     
-    func test_bsToAd_returnConvertedDate() {
+    func test_BSToAD_returnConvertedDate() {
         validNCDates().forEach { (dateToBeConverted, expectedDate) in
             XCTAssertEqual(try? DateConverter.bSToAD(date: dateToBeConverted), expectedDate)
         }
