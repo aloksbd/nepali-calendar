@@ -11,19 +11,19 @@ class ADToBSConverter {
     
     public static func convert(date: NCDate) throws -> NCDate {
         guard DateValidator.validateADDate(date),
-              let days = try? daysCount(toADDate: date) else {
+              let days = try? daysCountSinceFirstADDate(toADDate: date) else {
             throw invalidDateError
         }
         
         return try BSFrom(days: days)
     }
     
-    private static func daysCount(toADDate date: NCDate) throws -> Int {
-        guard let interval = try? date.date().timeIntervalSince(NCCalendar.firstDateInAD) else {
+    private static func daysCountSinceFirstADDate(toADDate date: NCDate) throws -> Int {
+        guard let timeIntervalSinceFirstDate = try? date.date().timeIntervalSince(NCCalendar.firstDateInAD) else {
             throw invalidDateError
         }
         
-        let daysInFraction = (interval+NCCalendar.differenceInTimeZone) / 24 / 60 / 60
+        let daysInFraction = (timeIntervalSinceFirstDate + NCCalendar.differenceInTimeZone) / 24 / 60 / 60
     
         if daysInFraction < 0 {
             throw invalidDateError
