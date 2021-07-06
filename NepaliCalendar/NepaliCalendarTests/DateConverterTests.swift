@@ -15,7 +15,7 @@ class DateConverterTests: XCTestCase {
         
         try? invalidMonths.forEach {
             let date = NCDate(day: anyValidDay, month: $0, year: anyValidYear)
-            XCTAssertThrowsError(try DateConverter.BSToAD(date: date))
+            XCTAssertThrowsError(try NCDateConverter.BSToAD(date: date))
         }
     }
     
@@ -24,7 +24,7 @@ class DateConverterTests: XCTestCase {
         
         try? invalidDays.forEach {
             let date = NCDate(day: $0, month: anyValidMonth, year: anyValidYear)
-            XCTAssertThrowsError(try DateConverter.BSToAD(date: date))
+            XCTAssertThrowsError(try NCDateConverter.BSToAD(date: date))
         }
     }
     
@@ -33,7 +33,7 @@ class DateConverterTests: XCTestCase {
         
         try? invalidYears.forEach {
             let date = NCDate(day: anyValidDay, month: anyValidMonth, year: $0)
-            XCTAssertThrowsError(try DateConverter.BSToAD(date: date))
+            XCTAssertThrowsError(try NCDateConverter.BSToAD(date: date))
         }
     }
     
@@ -42,13 +42,13 @@ class DateConverterTests: XCTestCase {
         
         try? invalidDaysForMonthOfYear.forEach { (day, month, year) in
             let date = NCDate(day: day, month: month, year: year)
-            XCTAssertThrowsError(try DateConverter.BSToAD(date: date))
+            XCTAssertThrowsError(try NCDateConverter.BSToAD(date: date))
         }
     }
     
     func test_BSToAD_returnsConvertedDate() {
         validNCDates().forEach { (dateToBeConverted, expectedDate) in
-            let receivedDate = try? DateConverter.BSToAD(date: dateToBeConverted)
+            let receivedDate = try? NCDateConverter.BSToAD(date: dateToBeConverted)
             XCTAssertEqual(receivedDate, expectedDate)
         }
     }
@@ -58,7 +58,7 @@ class DateConverterTests: XCTestCase {
 
         try? invalidMonths.forEach {
             let date = NCDate(day: anyValidDay, month: $0, year: anyValidYear)
-            XCTAssertThrowsError(try DateConverter.ADToBS(date: date))
+            XCTAssertThrowsError(try NCDateConverter.ADToBS(date: date))
         }
     }
 
@@ -67,7 +67,7 @@ class DateConverterTests: XCTestCase {
 
         try? invalidDays.forEach {
             let date = NCDate(day: $0, month: anyValidMonth, year: anyValidYear)
-            XCTAssertThrowsError(try DateConverter.ADToBS(date: date))
+            XCTAssertThrowsError(try NCDateConverter.ADToBS(date: date))
         }
     }
 
@@ -76,7 +76,7 @@ class DateConverterTests: XCTestCase {
 
         try? invalidYears.forEach {
             let date = NCDate(day: anyValidDay, month: anyValidMonth, year: $0)
-            XCTAssertThrowsError(try DateConverter.ADToBS(date: date))
+            XCTAssertThrowsError(try NCDateConverter.ADToBS(date: date))
         }
     }
 
@@ -85,7 +85,7 @@ class DateConverterTests: XCTestCase {
 
         try? invalidDaysForMonthOfYear.forEach { (day, month, year) in
             let date = NCDate(day: day, month: month, year: year)
-            XCTAssertThrowsError(try DateConverter.ADToBS(date: date))
+            XCTAssertThrowsError(try NCDateConverter.ADToBS(date: date))
         }
     }
     
@@ -94,13 +94,13 @@ class DateConverterTests: XCTestCase {
 
         try? invalidDaysForMonthOfYear.forEach { (day, month, year) in
             let date = NCDate(day: day, month: month, year: year)
-            XCTAssertThrowsError(try DateConverter.ADToBS(date: date))
+            XCTAssertThrowsError(try NCDateConverter.ADToBS(date: date))
         }
     }
 
     func test_ADToBS_returnsConvertedDate() {
         validNCDates().forEach { (expectedDate, dateToBeConverted) in
-            let receivedDate = try? DateConverter.ADToBS(date: dateToBeConverted)
+            let receivedDate = try? NCDateConverter.ADToBS(date: dateToBeConverted)
             XCTAssertEqual(receivedDate, expectedDate)
         }
     }
