@@ -5,7 +5,7 @@
 //  Created by alok subedi on 02/06/2021.
 //
 
-class DateValidator {
+final class DateValidator {
     private static var firstADYear: Int { 1943 }
     private static var lastADYear: Int { 2033 }
     

@@ -5,7 +5,7 @@
 //  Created by alok subedi on 06/07/2021.
 //
 
-class ADToBSConverter {
+final class ADToBSConverter {
     
     private static let invalidDateError = NSError(domain: "Invalid Date", code: 0)
     
