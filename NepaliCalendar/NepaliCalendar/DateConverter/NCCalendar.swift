@@ -1,11 +1,29 @@
 //
-//  BSDates.swift
+//  NCCalendar.swift
 //  NepaliCalendar
 //
 //  Created by Nikesh Hyanju on 01/05/2021.
 //
 
- struct BSDates {
+ struct NCCalendar {
+    
+    private static var firstDateInADInString: String { "14 04 1943" }
+    
+    private static func dateFromDateString(timeZone: TimeZone) -> Date {
+        let dateFormatter = DateFormatter(timeZone: timeZone)
+        let dateInCurrentTimeZone = dateFormatter.date(from: firstDateInADInString)!
+        return dateInCurrentTimeZone
+    }
+    
+    static var firstDateInAD: Date {
+        return dateFromDateString(timeZone: .current)
+    }
+    
+    static var differenceInTimeZone: TimeInterval {
+        let date = dateFromDateString(timeZone: TimeZone(identifier: "UTC") ?? .current)
+        let difference = date.timeIntervalSince1970 - firstDateInAD.timeIntervalSince1970
+        return abs(Double(difference))
+    }
     
     static let bs = [
         2000: [30, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31],

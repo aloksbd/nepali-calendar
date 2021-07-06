@@ -20,7 +20,7 @@ class DateValidator {
     }
     
     static func validateBSDate(_ date: NCDate) -> Bool {
-        if let daysInMonths = BSDates.bs[date.year],
+        if let daysInMonths = NCCalendar.bs[date.year],
            validateMonth(date.month) && validateDay(date.day) {
             let monthIndex = date.month - 1
             if date.day <= daysInMonths[monthIndex] {

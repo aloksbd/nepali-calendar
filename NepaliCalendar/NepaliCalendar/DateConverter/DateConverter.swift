@@ -7,30 +7,12 @@
 
 public final class DateConverter {
     
-    private static var firstDateInADInString: String { "14 04 1943" }
-    
-    private static func dateFromDateString(timeZone: TimeZone) -> Date {
-        let dateFormatter = DateFormatter(timeZone: timeZone)
-        let dateInCurrentTimeZone = dateFormatter.date(from: firstDateInADInString)!
-        return dateInCurrentTimeZone
-    }
-    
-    private static var firstDateInAD: Date {
-        return dateFromDateString(timeZone: .current)
-    }
-    
-    private static var differenceInTimeZone: TimeInterval {
-        let date = dateFromDateString(timeZone: TimeZone(identifier: "UTC") ?? .current)
-        let difference = date.timeIntervalSince1970 - firstDateInAD.timeIntervalSince1970
-        return abs(Double(difference))
-    }
-    
     public enum Error: Swift.Error {
         case invalidRange
     }
     
     public static func BSToAD(date: NCDate) throws -> NCDate {
-        try BSToADConverter.convert(date: date, firstDateInAD: firstDateInAD)
+        try BSToADConverter.convert(date: date, firstDateInAD: NCCalendar.firstDateInAD)
     }
     
     public static func ADToBS(date: NCDate) throws -> NCDate {
@@ -43,11 +25,11 @@ public final class DateConverter {
     }
     
     private static func daysCount(toADDate date: NCDate) throws -> Int {
-        guard let interval = try? date.date().timeIntervalSince(firstDateInAD) else {
+        guard let interval = try? date.date().timeIntervalSince(NCCalendar.firstDateInAD) else {
             throw Error.invalidRange
         }
         
-        let daysInFraction = (interval+differenceInTimeZone) / 24 / 60 / 60
+        let daysInFraction = (interval+NCCalendar.differenceInTimeZone) / 24 / 60 / 60
     
         if daysInFraction < 0 {
             throw Error.invalidRange
@@ -58,7 +40,7 @@ public final class DateConverter {
     
     private static func BSFrom(days: Int) throws -> NCDate {
         var totalDays = 0
-        for (key, val) in BSDates.bs.sorted(by: { $0.key < $1.key }) {
+        for (key, val) in NCCalendar.bs.sorted(by: { $0.key < $1.key }) {
             totalDays += val.reduce(0, +)
             if totalDays > days {
                 totalDays -= val.reduce(0, +)
