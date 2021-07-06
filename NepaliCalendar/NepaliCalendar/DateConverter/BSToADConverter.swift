@@ -9,14 +9,14 @@ final class BSToADConverter {
     
     private static let invalidDateError = NSError(domain: "Invalid Date", code: 0)
     
-    static func convert(date: NCDate, firstDateInAD: Date) throws -> NCDate {
+    static func convert(date: NCDate) throws -> NCDate {
         if !DateValidator.validateBSDate(date) {
             throw invalidDateError
         }
         
         let timestampForOneDay = 24 * 60 * 60
         let timestamp = daysCountSinceFirstBSDate(toBSDate: date) * timestampForOneDay
-        let convertedDate =  Date(timeInterval: TimeInterval(timestamp), since: firstDateInAD)
+        let convertedDate =  Date(timeInterval: TimeInterval(timestamp), since: NCCalendar.firstDateInAD)
         
         return NCDate(from: convertedDate)
     }

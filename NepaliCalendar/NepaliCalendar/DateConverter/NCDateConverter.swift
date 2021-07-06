@@ -8,7 +8,7 @@
 public final class NCDateConverter {
     
     public static func BSToAD(date: NCDate) throws -> NCDate {
-        try BSToADConverter.convert(date: date, firstDateInAD: NCCalendar.firstDateInAD)
+        try BSToADConverter.convert(date: date)
     }
     
     public static func ADToBS(date: NCDate) throws -> NCDate {
