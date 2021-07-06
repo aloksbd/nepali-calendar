@@ -31,7 +31,7 @@ final class BSToADConverter {
     
     private static func totalDaysBeforeGivenMonth(date: NCDate) -> Int{
         var totalDaysBeforeGivenMonth = 0
-        for (year, daysInMonths) in NCCalendar.bs.sorted(by: { $0.key < $1.key }) {
+        for (year, daysInMonths) in NCCalendar.sortedBS {
             if year == date.year {
                 totalDaysBeforeGivenMonth += totalDaysBefore(month: date.month, in: daysInMonths)
                 break

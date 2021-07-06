@@ -51,7 +51,7 @@ class ADToBSConverter {
     
     private static func year(from days: Int) throws -> (year: Int, daysUntilLastYear: Int) {
         var daysUntilLastYear = 0
-        for (year, daysInMonths) in NCCalendar.bs.sorted(by: { $0.key < $1.key }) {
+        for (year, daysInMonths) in NCCalendar.sortedBS {
             daysUntilLastYear += daysInMonths.reduce(0, +)
             if daysUntilLastYear > days {
                 daysUntilLastYear -= daysInMonths.reduce(0, +)

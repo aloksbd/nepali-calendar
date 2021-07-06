@@ -25,6 +25,8 @@
         return abs(Double(difference))
     }
     
+    static var sortedBS: [Dictionary<Int, [Int]>.Element] { bs.sorted(by: { $0.key < $1.key }) }
+    
     static var bs: [Int: [Int]] {
         [
             2000: [30, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31],
