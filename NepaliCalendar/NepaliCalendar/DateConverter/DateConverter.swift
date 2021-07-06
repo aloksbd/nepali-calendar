@@ -7,10 +7,6 @@
 
 public final class DateConverter {
     
-    public enum Error: Swift.Error {
-        case invalidRange
-    }
-    
     public static func BSToAD(date: NCDate) throws -> NCDate {
         try BSToADConverter.convert(date: date, firstDateInAD: NCCalendar.firstDateInAD)
     }
