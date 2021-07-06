@@ -41,21 +41,35 @@ class ADToBSConverter {
     }
     
     private static func BSFrom(days: Int) throws -> NCDate {
-        var totalDays = 0
-        for (key, val) in NCCalendar.bs.sorted(by: { $0.key < $1.key }) {
-            totalDays += val.reduce(0, +)
-            if totalDays > days {
-                totalDays -= val.reduce(0, +)
-                for i in 0..<12 {
-                    totalDays += val[i]
-                    if totalDays > days {
-                        let day = val[i] - totalDays + days
-                        return NCDate(day: day, month: i + 1, year: key)
-                    }
-                }
+        let (year, daysUntilLastYear) = try year(from: days)
+        let daysInGivenYear = days - daysUntilLastYear
+        
+        guard let daysInMonths = NCCalendar.bs[year] else { throw invalidDateError }
+        let (day, month) = try dayAndMonth(from: daysInGivenYear, daysInMonths: daysInMonths)
+        return NCDate(day: day, month: month, year: year)
+    }
+    
+    private static func year(from days: Int) throws -> (year: Int, daysUntilLastYear: Int) {
+        var daysUntilLastYear = 0
+        for (year, daysInMonths) in NCCalendar.bs.sorted(by: { $0.key < $1.key }) {
+            daysUntilLastYear += daysInMonths.reduce(0, +)
+            if daysUntilLastYear > days {
+                daysUntilLastYear -= daysInMonths.reduce(0, +)
+                return (year, daysUntilLastYear)
             }
         }
-        
+        throw invalidDateError
+    }
+    
+    private static func dayAndMonth(from days: Int, daysInMonths: [Int]) throws -> (day: Int, month: Int) {
+        var addedDays = 0
+        for i in 0..<12 {
+            addedDays += daysInMonths[i]
+            if addedDays > days {
+                let day = daysInMonths[i] - addedDays + days
+                return (day: day, month: i + 1)
+            }
+        }
         throw invalidDateError
     }
     
