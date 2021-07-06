@@ -84,21 +84,32 @@ public final class DateConverter {
     }
     
     private static func daysCountSinceFirstBSDate(toBSDate date: NCDate) -> Int {
+        let totalDaysBeforeGivenMonth = totalDaysBeforeGivenMonth(date: date)
+        let totalDays = totalDaysBeforeGivenMonth + date.day
+        let totalDaysWhenFirstDayIsZero = totalDays - 1  //
+        
+        return totalDaysWhenFirstDayIsZero
+    }
+    
+    private static func totalDaysBeforeGivenMonth(date: NCDate) -> Int{
         var totalDaysBeforeGivenMonth = 0
         for (year, daysInMonths) in BSDates.bs.sorted(by: { $0.key < $1.key }) {
             if year == date.year {
-                for i in 0..<date.month - 1 {
-                    totalDaysBeforeGivenMonth += daysInMonths[i]
-                }
+                totalDaysBeforeGivenMonth += totalDaysBefore(month: date.month, in: daysInMonths)
                 break
             }
             let totalDaysInCurrentYear = daysInMonths.reduce(0, +)
             totalDaysBeforeGivenMonth += totalDaysInCurrentYear
         }
-        let totalDays = totalDaysBeforeGivenMonth + date.day
-        let totalDaysWhenFirstDayIsZero = totalDays - 1
-        
-        return totalDaysWhenFirstDayIsZero
+        return totalDaysBeforeGivenMonth
+    }
+    
+    private static func totalDaysBefore(month: Int, in daysInMonths: [Int]) -> Int {
+        var totalDays = 0
+        for i in 0..<month - 1 {
+            totalDays += daysInMonths[i]
+        }
+        return totalDays
     }
     
 }
