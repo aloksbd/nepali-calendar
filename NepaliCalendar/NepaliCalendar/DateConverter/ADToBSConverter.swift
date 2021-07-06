@@ -23,13 +23,16 @@ class ADToBSConverter {
             throw invalidDateError
         }
         
-        let daysInFraction = (timeIntervalSinceFirstDate + NCCalendar.differenceInTimeZone) / 24 / 60 / 60
+        let timeIntervalForOneDay: Double = 24 * 60 * 60
+        let timeIntervalSinceFirstDateOnCurrentTimeZone = timeIntervalSinceFirstDate + NCCalendar.differenceInTimeZone
+        let totalDaysInFraction = timeIntervalSinceFirstDateOnCurrentTimeZone / timeIntervalForOneDay
     
-        if daysInFraction < 0 {
+        if totalDaysInFraction < 0 {
             throw invalidDateError
         }
         
-        return Int(daysInFraction) + 1
+        let totalDaysWhenFirstDayIsOne = Int(totalDaysInFraction) + 1
+        return totalDaysWhenFirstDayIsOne
     }
     
     private static func BSFrom(days: Int) throws -> NCDate {
