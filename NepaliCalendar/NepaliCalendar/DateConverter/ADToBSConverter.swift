@@ -7,9 +7,9 @@
 
 class ADToBSConverter {
     
-    static let invalidDateError = NSError(domain: "Invalid Date", code: 0)
+    private static let invalidDateError = NSError(domain: "Invalid Date", code: 0)
     
-    public static func convert(date: NCDate) throws -> NCDate {
+    static func convert(date: NCDate) throws -> NCDate {
         guard DateValidator.validateADDate(date),
               let days = try? daysCountSinceFirstADDate(toADDate: date) else {
             throw invalidDateError
