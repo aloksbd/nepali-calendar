@@ -15,6 +15,7 @@
 		5C5FEAC9263D3F3300BD0058 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEAC8263D3F3300BD0058 /* DateConverter.swift */; };
 		5C5FEACD263D48BB00BD0058 /* NCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEACC263D48BB00BD0058 /* NCDate.swift */; };
 		5C9023C22691C64300D4F260 /* DateFormatter + InitWithTimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9023C12691C64300D4F260 /* DateFormatter + InitWithTimeZone.swift */; };
+		5C9023C426941DB300D4F260 /* BSToADConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9023C326941DB300D4F260 /* BSToADConverter.swift */; };
 		5CFB60D52667E88600088D69 /* DateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFB60D42667E88600088D69 /* DateValidator.swift */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,7 @@
 		5C5FEAC8263D3F3300BD0058 /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
 		5C5FEACC263D48BB00BD0058 /* NCDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCDate.swift; sourceTree = "<group>"; };
 		5C9023C12691C64300D4F260 /* DateFormatter + InitWithTimeZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter + InitWithTimeZone.swift"; sourceTree = "<group>"; };
+		5C9023C326941DB300D4F260 /* BSToADConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSToADConverter.swift; sourceTree = "<group>"; };
 		5CFB60D42667E88600088D69 /* DateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 				5C5FEACC263D48BB00BD0058 /* NCDate.swift */,
 				501050E8263D676C00C1E74B /* BSDates.swift */,
 				5CFB60D42667E88600088D69 /* DateValidator.swift */,
+				5C9023C326941DB300D4F260 /* BSToADConverter.swift */,
 			);
 			path = DateConverter;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C5FEACD263D48BB00BD0058 /* NCDate.swift in Sources */,
+				5C9023C426941DB300D4F260 /* BSToADConverter.swift in Sources */,
 				5C9023C22691C64300D4F260 /* DateFormatter + InitWithTimeZone.swift in Sources */,
 				5C5FEAC9263D3F3300BD0058 /* DateConverter.swift in Sources */,
 				5CFB60D52667E88600088D69 /* DateValidator.swift in Sources */,
