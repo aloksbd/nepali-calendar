@@ -12,17 +12,19 @@ class NCDateTests: XCTestCase {
  
     func test_initFromDate_returnsEquivalentNCDate() {
         let date = Date(timeIntervalSince1970: TimeInterval(1620832329))
-        let sut = NCDate(from: date, timeZone: TimeZone(identifier: "Asia/Kathmandu")!)
         let expectedNCDate = NCDate(day: 12, month: 5, year: 2021)
+        
+        let sut = NCDate(from: date, timeZone: TimeZone(identifier: "Asia/Kathmandu")!)
         
         XCTAssertEqual(sut, expectedNCDate)
     }
     
-    func test_convertNCDateToDate_throwsInvalidDateOnInvalidNCDate() {
+    func test_convertNCDateToDate_throwsErrorOnInvalidNCDate() {
         let invalidNCDates = [
             NCDate(day: 23, month: 32, year: 2020),
             NCDate(day: 90, month: 12, year: 2020),
-            NCDate(day: 12, month: 32, year: 2020),
+            NCDate(day: 12, month: 0, year: 2020),
+            NCDate(day: -1, month: 12, year: 2020),
         ]
         
         try? invalidNCDates.forEach { XCTAssertThrowsError(try $0.date()) }
@@ -34,7 +36,7 @@ class NCDateTests: XCTestCase {
         }
     }
 
-    private func validNCDates() -> [(datesToBeConverted: NCDate, expectedDates: Date)] {
+    private func validNCDates() -> [(dateToBeConverted: NCDate, expectedDate: Date)] {
         return [
             (NCDate(day: 1, month: 12, year: 2020), Date(timeIntervalSince1970: TimeInterval(1606780800))),
             (NCDate(day: 6, month: 12, year: 9999), Date(timeIntervalSince1970: TimeInterval(253400054400))),

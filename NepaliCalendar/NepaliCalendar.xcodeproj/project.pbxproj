@@ -7,13 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		501050E9263D676C00C1E74B /* BSDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501050E8263D676C00C1E74B /* BSDates.swift */; };
+		501050E9263D676C00C1E74B /* NCCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 501050E8263D676C00C1E74B /* NCCalendar.swift */; };
 		5C31B297264C24FE0024D9CC /* NCDateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C31B296264C24FE0024D9CC /* NCDateTests.swift */; };
 		5C5FEAA9263D3DD500BD0058 /* NepaliCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = 5C5FEAA7263D3DD500BD0058 /* NepaliCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5C5FEAB9263D3E1300BD0058 /* NepaliCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5FEAA4263D3DD500BD0058 /* NepaliCalendar.framework */; };
 		5C5FEAC4263D3EF000BD0058 /* DateConverterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEAC3263D3EF000BD0058 /* DateConverterTests.swift */; };
-		5C5FEAC9263D3F3300BD0058 /* DateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEAC8263D3F3300BD0058 /* DateConverter.swift */; };
+		5C5FEAC9263D3F3300BD0058 /* NCDateConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEAC8263D3F3300BD0058 /* NCDateConverter.swift */; };
 		5C5FEACD263D48BB00BD0058 /* NCDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5FEACC263D48BB00BD0058 /* NCDate.swift */; };
+		5C9023C22691C64300D4F260 /* DateFormatter + InitWithTimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9023C12691C64300D4F260 /* DateFormatter + InitWithTimeZone.swift */; };
+		5C9023C426941DB300D4F260 /* BSToADConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9023C326941DB300D4F260 /* BSToADConverter.swift */; };
+		5C9023C626943F0000D4F260 /* ADToBSConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9023C526943F0000D4F260 /* ADToBSConverter.swift */; };
 		5CFB60D52667E88600088D69 /* DateValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CFB60D42667E88600088D69 /* DateValidator.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,7 +31,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		501050E8263D676C00C1E74B /* BSDates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSDates.swift; sourceTree = "<group>"; };
+		501050E8263D676C00C1E74B /* NCCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCCalendar.swift; sourceTree = "<group>"; };
 		5C31B296264C24FE0024D9CC /* NCDateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCDateTests.swift; sourceTree = "<group>"; };
 		5C5FEAA4263D3DD500BD0058 /* NepaliCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NepaliCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C5FEAA7263D3DD500BD0058 /* NepaliCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NepaliCalendar.h; sourceTree = "<group>"; };
@@ -36,8 +39,11 @@
 		5C5FEAB4263D3E1300BD0058 /* NepaliCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NepaliCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C5FEAB8263D3E1300BD0058 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5C5FEAC3263D3EF000BD0058 /* DateConverterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverterTests.swift; sourceTree = "<group>"; };
-		5C5FEAC8263D3F3300BD0058 /* DateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateConverter.swift; sourceTree = "<group>"; };
+		5C5FEAC8263D3F3300BD0058 /* NCDateConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCDateConverter.swift; sourceTree = "<group>"; };
 		5C5FEACC263D48BB00BD0058 /* NCDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NCDate.swift; sourceTree = "<group>"; };
+		5C9023C12691C64300D4F260 /* DateFormatter + InitWithTimeZone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter + InitWithTimeZone.swift"; sourceTree = "<group>"; };
+		5C9023C326941DB300D4F260 /* BSToADConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BSToADConverter.swift; sourceTree = "<group>"; };
+		5C9023C526943F0000D4F260 /* ADToBSConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADToBSConverter.swift; sourceTree = "<group>"; };
 		5CFB60D42667E88600088D69 /* DateValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateValidator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -101,12 +107,23 @@
 		5C5FEAC7263D3F2600BD0058 /* DateConverter */ = {
 			isa = PBXGroup;
 			children = (
-				5C5FEAC8263D3F3300BD0058 /* DateConverter.swift */,
+				5C9023C02691C62300D4F260 /* Helpers */,
+				5C5FEAC8263D3F3300BD0058 /* NCDateConverter.swift */,
 				5C5FEACC263D48BB00BD0058 /* NCDate.swift */,
-				501050E8263D676C00C1E74B /* BSDates.swift */,
+				501050E8263D676C00C1E74B /* NCCalendar.swift */,
 				5CFB60D42667E88600088D69 /* DateValidator.swift */,
+				5C9023C326941DB300D4F260 /* BSToADConverter.swift */,
+				5C9023C526943F0000D4F260 /* ADToBSConverter.swift */,
 			);
 			path = DateConverter;
+			sourceTree = "<group>";
+		};
+		5C9023C02691C62300D4F260 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5C9023C12691C64300D4F260 /* DateFormatter + InitWithTimeZone.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,9 +237,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C5FEACD263D48BB00BD0058 /* NCDate.swift in Sources */,
-				5C5FEAC9263D3F3300BD0058 /* DateConverter.swift in Sources */,
+				5C9023C626943F0000D4F260 /* ADToBSConverter.swift in Sources */,
+				5C9023C426941DB300D4F260 /* BSToADConverter.swift in Sources */,
+				5C9023C22691C64300D4F260 /* DateFormatter + InitWithTimeZone.swift in Sources */,
+				5C5FEAC9263D3F3300BD0058 /* NCDateConverter.swift in Sources */,
 				5CFB60D52667E88600088D69 /* DateValidator.swift in Sources */,
-				501050E9263D676C00C1E74B /* BSDates.swift in Sources */,
+				501050E9263D676C00C1E74B /* NCCalendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

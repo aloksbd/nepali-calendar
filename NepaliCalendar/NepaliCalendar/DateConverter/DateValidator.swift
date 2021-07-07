@@ -5,25 +5,28 @@
 //  Created by alok subedi on 02/06/2021.
 //
 
-class DateValidator {
+final class DateValidator {
+    private static var firstADYear: Int { 1943 }
+    private static var lastADYear: Int { 2033 }
+    
     static func validateADDate(_ date: NCDate) -> Bool {
+        let validADYear = (date.year >= firstADYear && date.year <= lastADYear)
         if !validateDay(date.day) ||
             !validateMonth(date.month) ||
-            !(date.year >= 1943 && date.year <= 2033) {
+            !validADYear {
             return false
         }
         return true
     }
     
     static func validateBSDate(_ date: NCDate) -> Bool {
-        if let daysInMonth = BSDates.bs[date.year],
+        if let daysInMonths = NCCalendar.bs[date.year],
            validateMonth(date.month) && validateDay(date.day) {
-            let dateAsIndexForBS = date.month - 1
-            if date.day <= daysInMonth[dateAsIndexForBS] {
+            let monthIndex = date.month - 1
+            if date.day <= daysInMonths[monthIndex] {
                 return true
             }
         }
-        
         return false
     }
     
@@ -32,7 +35,6 @@ class DateValidator {
         if validDays.contains(day) {
             return true
         }
-        
         return false
     }
     
@@ -41,7 +43,6 @@ class DateValidator {
         if validMonths.contains(month) {
             return true
         }
-        
         return false
     }
 }
